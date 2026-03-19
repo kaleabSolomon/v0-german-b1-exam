@@ -1,12 +1,10 @@
 'use client';
 
 import { useExam } from '@/lib/exam-context';
-import { ShortAnswerQuestion } from '@/components/exam/short-answer-question';
+import { ListeningQuestion } from '@/components/exam/listening-question';
 import { SectionSidebar } from '@/components/exam/section-sidebar';
 import { ExamTimer } from '@/components/exam/exam-timer';
 import { QuestionNavigation } from '@/components/exam/question-navigation';
-import { Card } from '@/components/ui/card';
-import { Volume2 } from 'lucide-react';
 
 export default function HoerenPage() {
   const { state, getSectionQuestions } = useExam();
@@ -68,7 +66,7 @@ export default function HoerenPage() {
               </div>
             </div>
 
-            <ShortAnswerQuestion question={currentQuestion} />
+            <ListeningQuestion question={currentQuestion} />
           </div>
 
           {/* Navigation */}
