@@ -20,6 +20,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Call ElevenLabs API to generate speech
+    // Try with eleven_turbo_v2_5 first (most efficient)
+    // Voice ID: 21m00Tcm4TlvDq8ikWAM (Rachel - works with multiple models)
     const response = await fetch(
       'https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM',
       {
@@ -30,7 +32,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           text: text,
-          model_id: 'eleven_monolingual_v1',
+          model_id: 'eleven_turbo_v2_5',
           voice_settings: {
             stability: 0.5,
             similarity_boost: 0.75,
@@ -42,8 +44,18 @@ export async function POST(request: NextRequest) {
     if (!response.ok) {
       const errorData = await response.json();
       console.error('[v0] ElevenLabs API error:', errorData);
+      
+      // Handle specific error cases
+      let errorMessage = errorData?.detail?.message || errorData?.error || 'Failed to generate speech';
+      
+      // Check if it's a subscription/tier issue
+      if (errorData?.detail?.status === 'model_deprecated_free_tier' || 
+          errorData?.detail?.code === 'subscription_required') {
+        errorMessage = 'This text-to-speech model requires a paid ElevenLabs subscription. Please upgrade your account at elevenlabs.io or use a model available on the free tier.';
+      }
+      
       return NextResponse.json(
-        { error: 'Failed to generate speech' },
+        { error: errorMessage },
         { status: response.status }
       );
     }
