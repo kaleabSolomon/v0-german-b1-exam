@@ -7,12 +7,18 @@ import { ExamTimer } from '@/components/exam/exam-timer';
 import { QuestionNavigation } from '@/components/exam/question-navigation';
 
 export default function SprechenPage() {
-  const { state, getSectionQuestions, getCurrentQuestion } = useExam();
+  const { state, getSectionQuestions } = useExam();
   const questions = getSectionQuestions('sprechen');
-  const currentQuestion = getCurrentQuestion();
+  const currentQuestion = questions[state.currentQuestionIndex];
 
   if (!currentQuestion) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-muted-foreground">No questions available</p>
+        </div>
+      </div>
+    );
   }
 
   return (
