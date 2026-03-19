@@ -11,63 +11,74 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.ELEVENLABS_API_KEY;
+    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { error: 'ElevenLabs API key not configured' },
+        { error: 'Gemini API key not configured' },
         { status: 500 }
       );
     }
 
-    // Call ElevenLabs API to generate speech
-    // Try with eleven_turbo_v2_5 first (most efficient)
-    // Voice ID: 21m00Tcm4TlvDq8ikWAM (Rachel - works with multiple models)
+    // Call Google Gemini TTS API
+    // Using gemini-2.5-flash-preview-tts model with Kore voice (clear, professional)
     const response = await fetch(
-      'https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM',
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent',
       {
         method: 'POST',
         headers: {
-          'xi-api-key': apiKey,
+          'x-goog-api-key': apiKey,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          text: text,
-          model_id: 'eleven_turbo_v2_5',
-          voice_settings: {
-            stability: 0.5,
-            similarity_boost: 0.75,
-          },
+          contents: [
+            {
+              parts: [
+                {
+                  text: text,
+                }
+              ]
+            }
+          ],
+          generationConfig: {
+            responseModalities: ['AUDIO'],
+            speechConfig: {
+              voiceConfig: {
+                prebuiltVoiceConfig: {
+                  voiceName: 'Kore', // Clear, professional voice suitable for German language
+                }
+              }
+            }
+          }
         }),
       }
     );
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('[v0] ElevenLabs API error:', errorData);
+      console.error('[v0] Gemini TTS API error:', errorData);
       
-      // Handle specific error cases
-      let errorMessage = errorData?.detail?.message || errorData?.error || 'Failed to generate speech';
-      
-      // Check if it's a subscription/tier issue
-      if (errorData?.detail?.status === 'model_deprecated_free_tier' || 
-          errorData?.detail?.code === 'subscription_required') {
-        errorMessage = 'This text-to-speech model requires a paid ElevenLabs subscription. Please upgrade your account at elevenlabs.io or use a model available on the free tier.';
-      }
-      
+      const errorMessage = errorData?.error?.message || 'Failed to generate speech';
       return NextResponse.json(
         { error: errorMessage },
         { status: response.status }
       );
     }
 
-    // Get the audio stream
-    const audioBuffer = await response.arrayBuffer();
+    const data = await response.json();
+    const audioData = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+    
+    if (!audioData) {
+      console.error('[v0] No audio data in Gemini response:', data);
+      return NextResponse.json(
+        { error: 'No audio data received from TTS service' },
+        { status: 500 }
+      );
+    }
 
-    // Return the audio as base64-encoded data URL
-    const base64Audio = Buffer.from(audioBuffer).toString('base64');
-    const dataUrl = `data:audio/mpeg;base64,${base64Audio}`;
+    // Audio data is already in base64 format from Gemini API
+    const audioUrl = `data:audio/wav;base64,${audioData}`;
 
-    return NextResponse.json({ audioUrl: dataUrl });
+    return NextResponse.json({ audioUrl });
   } catch (error) {
     console.error('[v0] TTS error:', error);
     return NextResponse.json(
