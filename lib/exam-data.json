@@ -1,0 +1,284 @@
+{
+  "level": "B1",
+  "meta": {
+    "title": "B1 German Full Exam",
+    "timeLimitMinutes": 90
+  },
+  "sections": [
+    {
+      "id": "lesen",
+      "title": "Lesen",
+      "type": "reading",
+      "questions": [
+        {
+          "id": "lesen_1",
+          "type": "multiple_choice",
+          "content": {
+            "text": "Viele Menschen glauben, dass Homeoffice automatisch zu mehr Freizeit führt. Studien zeigen jedoch, dass Arbeitnehmer oft länger arbeiten, wenn sie von zu Hause aus tätig sind."
+          },
+          "question": "Warum arbeiten viele Menschen im Homeoffice länger?",
+          "options": [
+            "Weil sie weniger Aufgaben haben",
+            "Weil die Grenze zwischen Arbeit und Freizeit verschwimmt",
+            "Weil sie gezwungen werden",
+            "Weil sie weniger motiviert sind"
+          ],
+          "correctAnswer": 1,
+          "points": 2,
+          "difficulty": "medium"
+        },
+        {
+          "id": "lesen_2",
+          "type": "multiple_choice",
+          "content": {
+            "text": "Anna wollte den Zug um 8 Uhr nehmen, aber wegen eines technischen Problems kam er erst um 9 Uhr an. Sie kam trotzdem pünktlich zum Meeting."
+          },
+          "question": "Was kann man daraus schließen?",
+          "options": [
+            "Das Meeting begann später als geplant",
+            "Anna hat den Zug verpasst",
+            "Anna war zu spät",
+            "Das Meeting wurde abgesagt"
+          ],
+          "correctAnswer": 0,
+          "points": 2,
+          "difficulty": "hard"
+        },
+        {
+          "id": "lesen_3",
+          "type": "multiple_choice",
+          "content": {
+            "text": "Obwohl das Restaurant sehr beliebt ist, beschweren sich einige Gäste über den langsamen Service."
+          },
+          "question": "Was ist hier der Widerspruch?",
+          "options": [
+            "Das Essen ist schlecht",
+            "Beliebtheit trotz Kritik",
+            "Es gibt zu viele Mitarbeiter",
+            "Die Gäste essen nicht gern dort"
+          ],
+          "correctAnswer": 1,
+          "points": 2,
+          "difficulty": "medium"
+        },
+        {
+          "id": "lesen_4",
+          "type": "multiple_choice",
+          "content": {
+            "text": "Peter spart seit Monaten Geld, obwohl er nicht genau weiß, wofür er es verwenden möchte."
+          },
+          "question": "Was sagt das über Peter aus?",
+          "options": [
+            "Er ist planlos",
+            "Er ist vorsichtig mit Geld",
+            "Er ist verschwenderisch",
+            "Er hat kein Ziel"
+          ],
+          "correctAnswer": 1,
+          "points": 2,
+          "difficulty": "medium"
+        },
+        {
+          "id": "lesen_5",
+          "type": "multiple_choice",
+          "content": {
+            "text": "Die Stadt hat neue Fahrradwege gebaut, doch die Nutzung ist bisher gering."
+          },
+          "question": "Was könnte ein Grund sein?",
+          "options": [
+            "Die Wege sind zu alt",
+            "Die Menschen kennen sie noch nicht oder nutzen lieber Autos",
+            "Es gibt keine Fahrräder",
+            "Fahrräder sind verboten"
+          ],
+          "correctAnswer": 1,
+          "points": 2,
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "id": "hoeren",
+      "title": "Hören",
+      "type": "listening",
+      "questions": [
+        {
+          "id": "hoeren_1",
+          "type": "short_answer",
+          "content": {
+            "transcript": "Ich wollte gestern ins Kino gehen, aber alle Tickets waren schon ausverkauft."
+          },
+          "question": "Warum ging die Person nicht ins Kino?",
+          "acceptableAnswers": [
+            "keine tickets",
+            "tickets waren ausverkauft"
+          ],
+          "points": 2,
+          "difficulty": "easy"
+        },
+        {
+          "id": "hoeren_2",
+          "type": "short_answer",
+          "content": {
+            "transcript": "Der Chef meinte, wir könnten früher gehen, wenn wir die Arbeit schneller erledigen."
+          },
+          "question": "Was ist die Bedingung?",
+          "acceptableAnswers": [
+            "arbeit schneller erledigen",
+            "wenn wir schneller arbeiten"
+          ],
+          "points": 2,
+          "difficulty": "medium"
+        },
+        {
+          "id": "hoeren_3",
+          "type": "short_answer",
+          "content": {
+            "transcript": "Es ist zwar teuer, aber die Qualität ist wirklich hervorragend."
+          },
+          "question": "Wie ist die Einstellung der Person?",
+          "acceptableAnswers": [
+            "positiv",
+            "trotz teuer positiv"
+          ],
+          "points": 2,
+          "difficulty": "medium"
+        },
+        {
+          "id": "hoeren_4",
+          "type": "short_answer",
+          "content": {
+            "transcript": "Ich habe den Bus verpasst, deshalb musste ich ein Taxi nehmen."
+          },
+          "question": "Was war die Folge?",
+          "acceptableAnswers": [
+            "taxi genommen",
+            "musste taxi nehmen"
+          ],
+          "points": 2,
+          "difficulty": "easy"
+        },
+        {
+          "id": "hoeren_5",
+          "type": "short_answer",
+          "content": {
+            "transcript": "Wenn ich mehr Zeit hätte, würde ich öfter reisen."
+          },
+          "question": "Was bedeutet das?",
+          "acceptableAnswers": [
+            "hat keine zeit",
+            "reist nicht oft wegen zeit"
+          ],
+          "points": 2,
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "id": "schreiben",
+      "title": "Schreiben",
+      "type": "writing",
+      "questions": [
+        {
+          "id": "schreiben_1",
+          "type": "long_text",
+          "question": "Schreiben Sie eine E-Mail an Ihren Chef und bitten Sie um einen freien Tag.",
+          "constraints": {
+            "minWords": 80,
+            "tone": "formal",
+            "mustInclude": ["Grund"]
+          },
+          "points": 10,
+          "difficulty": "medium"
+        },
+        {
+          "id": "schreiben_2",
+          "type": "long_text",
+          "question": "Beschreiben Sie eine Situation, in der Sie ein Problem lösen mussten.",
+          "constraints": {
+            "minWords": 80,
+            "tense": "past"
+          },
+          "points": 10,
+          "difficulty": "medium"
+        },
+        {
+          "id": "schreiben_3",
+          "type": "long_text",
+          "question": "Was denken Sie über Social Media im Alltag?",
+          "constraints": {
+            "minWords": 100,
+            "mustInclude": ["Vorteile", "Nachteile", "eigene Meinung"]
+          },
+          "points": 10,
+          "difficulty": "hard"
+        },
+        {
+          "id": "schreiben_4",
+          "type": "long_text",
+          "question": "Schreiben Sie eine Beschwerde über ein Produkt.",
+          "constraints": {
+            "tone": "formal",
+            "mustInclude": ["Problem", "Lösungsvorschlag"]
+          },
+          "points": 10,
+          "difficulty": "medium"
+        },
+        {
+          "id": "schreiben_5",
+          "type": "long_text",
+          "question": "Geben Sie einem Freund Tipps für das Leben in Deutschland.",
+          "constraints": {
+            "minWords": 80,
+            "tone": "informal",
+            "minPoints": 3
+          },
+          "points": 10,
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "id": "sprechen",
+      "title": "Sprechen",
+      "type": "speaking",
+      "questions": [
+        {
+          "id": "sprechen_1",
+          "type": "spoken_response",
+          "question": "Stellen Sie sich vor und sprechen Sie über Ihre Zukunftspläne.",
+          "evaluationCriteria": ["Flüssigkeit", "Grammatik", "Futur I"],
+          "points": 10
+        },
+        {
+          "id": "sprechen_2",
+          "type": "discussion",
+          "question": "Ist Online-Lernen besser als Präsenzunterricht?",
+          "evaluationCriteria": ["Argumentation", "Meinung"],
+          "points": 10
+        },
+        {
+          "id": "sprechen_3",
+          "type": "image_description",
+          "question": "Beschreiben und interpretieren Sie ein Bild.",
+          "evaluationCriteria": ["Beschreibung", "Interpretation"],
+          "points": 10
+        },
+        {
+          "id": "sprechen_4",
+          "type": "role_play",
+          "question": "Reagieren Sie auf eine Kundenbeschwerde.",
+          "evaluationCriteria": ["Höflichkeit", "Lösung"],
+          "points": 10
+        },
+        {
+          "id": "sprechen_5",
+          "type": "pair_task",
+          "question": "Planen Sie eine Reise mit einem Partner.",
+          "evaluationCriteria": ["Interaktion", "Vorschläge", "Kompromisse"],
+          "points": 10
+        }
+      ]
+    }
+  ]
+}
