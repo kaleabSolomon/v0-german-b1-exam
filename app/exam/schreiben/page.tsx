@@ -9,9 +9,12 @@ import { QuestionNavigation } from '@/components/exam/question-navigation';
 export default function SchreibenPage() {
   const { state, getSectionQuestions } = useExam();
   const questions = getSectionQuestions('schreiben');
-  const currentQuestion = questions[state.currentQuestionIndex];
+  
+  // Reset to first question if index is out of bounds
+  const questionIndex = Math.min(state.currentQuestionIndex, questions.length - 1);
+  const currentQuestion = questions[Math.max(0, questionIndex)];
 
-  if (!currentQuestion) {
+  if (!currentQuestion || !questions.length) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">

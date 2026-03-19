@@ -12,8 +12,18 @@ export function ShortAnswerQuestion({
   question,
 }: ShortAnswerQuestionProps) {
   const { saveAnswer, getAnswerForQuestion } = useExam();
-  const answer = getAnswerForQuestion(question.id);
+  const answer = getAnswerForQuestion(question?.id);
   const value = answer?.value || '';
+
+  if (!question) {
+    return (
+      <Card>
+        <CardContent className="p-6">
+          <p className="text-muted-foreground">Question not available</p>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card>

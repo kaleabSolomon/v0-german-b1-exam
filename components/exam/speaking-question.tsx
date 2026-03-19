@@ -15,9 +15,19 @@ export function SpeakingQuestion({
   question,
 }: SpeakingQuestionProps) {
   const { saveAnswer, getAnswerForQuestion } = useExam();
-  const answer = getAnswerForQuestion(question.id);
+  const answer = getAnswerForQuestion(question?.id);
   const [isRecording, setIsRecording] = useState(false);
   const [notes, setNotes] = useState(answer?.value || '');
+
+  if (!question) {
+    return (
+      <Card>
+        <CardContent className="p-6">
+          <p className="text-muted-foreground">Question not available</p>
+        </CardContent>
+      </Card>
+    );
+  }
 
   const handleStartRecording = () => {
     // Note: This is a placeholder. Real implementation would use Web Audio API

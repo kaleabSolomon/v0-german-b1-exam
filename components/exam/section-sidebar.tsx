@@ -7,8 +7,8 @@ import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function SectionSidebar() {
-  const { state, goToSection, getSectionQuestions, getAnswerForQuestion } = useExam();
-  const examData = require('@/lib/exam-data.json');
+  const { state, goToSection, getSectionQuestions, getAnswerForQuestion, getExamData } = useExam();
+  const examData = getExamData();
 
   return (
     <Card className="p-6 h-full flex flex-col gap-4">

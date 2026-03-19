@@ -1,11 +1,13 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useExam } from '@/lib/exam-context';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Flag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function QuestionNavigation() {
+  const router = useRouter();
   const { state, goToQuestion, getSectionQuestions, getAnswerForQuestion, finishExam } = useExam();
   const questions = getSectionQuestions(state.currentSection);
 
@@ -78,7 +80,10 @@ export function QuestionNavigation() {
 
       {/* Finish exam button */}
       <Button
-        onClick={finishExam}
+        onClick={() => {
+          finishExam();
+          router.push('/exam/results');
+        }}
         variant="default"
         className="w-full gap-2"
       >
